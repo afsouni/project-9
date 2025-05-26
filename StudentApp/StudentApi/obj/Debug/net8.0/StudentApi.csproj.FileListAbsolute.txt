@@ -136,3 +136,4 @@
 /home/hafsouni/Documents/webdevelopmentuni/project9/StudentApp/StudentApi/obj/Debug/net8.0/StudentApi.pdb
 /home/hafsouni/Documents/webdevelopmentuni/project9/StudentApp/StudentApi/obj/Debug/net8.0/StudentApi.genruntimeconfig.cache
 /home/hafsouni/Documents/webdevelopmentuni/project9/StudentApp/StudentApi/obj/Debug/net8.0/ref/StudentApi.dll
+/home/hafsouni/Documents/webdevelopmentuni/project9/StudentApp/StudentApi/obj/Debug/net8.0/StudentApi.sourcelink.json

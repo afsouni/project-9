@@ -33,7 +33,9 @@ app.UseStaticFiles(new StaticFileOptions
     FileProvider = new PhysicalFileProvider(frontendPath),
 });
 
+
 // app.UseHttpsRedirection();
+
 // app.UseCors("AllowAll");
 app.MapControllers();
 app.Run();

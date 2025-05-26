@@ -24,4 +24,16 @@ public class StudentsController : ControllerBase
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(Get), new { id = student.Id }, student);
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var student = await _context.Students.FindAsync(id);
+        if (student == null)
+            return NotFound();
+
+        _context.Students.Remove(student);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
 }

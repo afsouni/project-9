@@ -30,21 +30,21 @@
     </form>
 
     <table class="table table-striped">
-      <thead><tr><th>First Name</th><th>Last Name</th><th>Address</th></tr></thead>
+      <thead><tr><th>First Name</th><th>Last Name</th><th>Address</th><th>Actions</th></tr></thead>
       <tbody id="student-body"></tbody>
     </table>
   </div>
 
   <script>
-    // Use a relative URL so we stay same-origin
-    const API_URL = '/api/students';
+    // const API_URL = '/api/students';
+    const API_URL = 'http://localhost:5094/api/students';
 
     async function loadStudents() {
       try {
         const res = await axios.get(API_URL);
         const tbody = document.getElementById('student-body');
         tbody.innerHTML = res.data
-          .map(s => `<tr><td>${s.firstName}</td><td>${s.lastName}</td><td>${s.address}</td></tr>`)
+          .map(s => `<tr><td>${s.firstName}</td><td>${s.lastName}</td><td>${s.address}</td><td><button class="btn btn-sm btn-danger" onclick="deleteStudent(${s.id})">Delete</button></td></tr>`)
           .join('');
       } catch (err) {
         console.error('GET failed', err);
@@ -72,6 +72,18 @@
 
     // Initial load
     loadStudents();
+    async function deleteStudent(id) {
+    if (!confirm("Are you sure you want to delete this student?")) return;
+
+    try {
+      const res = await axios.delete(`/api/students/${id}`);
+      console.log("Deleted student", id);
+      loadStudents(); // refresh the list
+    } catch (err) {
+      console.error("Failed to delete student", err);
+      alert("Error deleting student");
+    }
+  }
   </script>
 </body>
 </html>
